@@ -1,1 +1,47 @@
-no problem 
+
+
+✅ C Program for CGPA and GPA Calculator
+
+#include <stdio.h>
+
+int main() {
+    int n, i;
+    float grade_point, credit, total_credits = 0, weighted_sum = 0;
+    float cgpa, gpa, percentage, total_grade_points = 0;
+
+    printf("Enter the number of subjects: ");
+    scanf("%d", &n);
+
+    for(i = 1; i <= n; i++) {
+        printf("\n--- Subject %d ---\n", i);
+        printf("Enter grade point (0-10): ");
+        scanf("%f", &grade_point);
+
+        // Input validation
+        if(grade_point < 0 || grade_point > 10) {
+            printf("Invalid grade point! Try again.\n");
+            i--;
+            continue;
+        }
+
+        printf("Enter credit hours for subject: ");
+        scanf("%f", &credit);
+
+        total_credits += credit;
+        weighted_sum += grade_point * credit;
+        total_grade_points += grade_point;
+    }
+
+    // GPA (weighted) and CGPA (unweighted)
+    gpa = weighted_sum / total_credits;
+    cgpa = total_grade_points / n;
+    percentage = cgpa * 9.5;
+
+    printf("\n===== RESULT =====\n");
+    printf("CGPA (Average of Grade Points): %.2f\n", cgpa);
+    printf("GPA (Weighted with Credits): %.2f\n", gpa);
+    printf("Equivalent Percentage: %.2f%%\n", percentage);
+
+    return o;
+
+}
