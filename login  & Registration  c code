@@ -1,0 +1,114 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define MAX_LEN 100
+#define FILENAME "users.txt"
+
+// Simple hash function for password (not secure for real use)
+unsigned long hash_password(const char *password) {
+    unsigned long hash = 5381;
+    int c;
+    while ((c = *password++))
+        hash = ((hash << 5) + hash) + c; // hash * 33 + c
+    return hash;
+}
+
+int username_exists(const char *username) {
+    FILE *file = fopen(FILENAME, "r");
+    if (!file) return 0;
+
+    char stored_username[MAX_LEN];
+    unsigned long dummy_hash;
+
+    while (fscanf(file, "%s %lu", stored_username, &dummy_hash) == 2) {
+        if (strcmp(username, stored_username) == 0) {
+            fclose(file);
+            return 1; // Username already exists
+        }
+    }
+    fclose(file);
+    return 0;
+}
+
+void register_user() {
+    char username[MAX_LEN], password[MAX_LEN];
+
+    printf("Enter a username: ");
+    scanf("%s", username);
+    if (username_exists(username)) {
+        printf("Error: Username already exists!\n");
+        return;
+    }
+
+    printf("Enter a password: ");
+    scanf("%s", password);
+
+    unsigned long hashed = hash_password(password);
+
+    FILE *file = fopen(FILENAME, "a");
+    if (!file) {
+        printf("Error: Cannot open file!\n");
+        return;
+    }
+
+    fprintf(file, "%s %lu\n", username, hashed);
+    fclose(file);
+    printf("Registration successful!\n");
+}
+
+void login_user() {
+    char username[MAX_LEN], password[MAX_LEN];
+    printf("Enter username: ");
+    scanf("%s", username);
+
+    printf("Enter password: ");
+    scanf("%s", password);
+    unsigned long hashed = hash_password(password);
+
+    FILE *file = fopen(FILENAME, "r");
+    if (!file) {
+        printf("Error: Cannot open file!\n");
+        return;
+    }
+
+    char stored_username[MAX_LEN];
+    unsigned long stored_hash;
+    int found = 0;
+
+    while (fscanf(file, "%s %lu", stored_username, &stored_hash) == 2) {
+        if (strcmp(username, stored_username) == 0) {
+            found = 1;
+            if (hashed == stored_hash) {
+                printf("Login successful!\n");
+            } else {
+                printf("Error: Incorrect password.\n");
+            }
+            break;
+        }
+    }
+    fclose(file);
+
+    if (!found) {
+        printf("Error: Username not found.\n");
+    }
+}
+
+int main() {
+    int choice;
+    while (1) {
+        printf("\n===== Menu =====\n");
+        printf("1. Register\n");
+        printf("2. Login\n");
+        printf("3. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+        switch (choice) {
+            case 1: register_user(); break;
+            case 2: login_user(); break;
+            case 3: exit(0);
+            default: printf("Invalid choice!\n");
+        }
+    }
+    return 0;
+}
