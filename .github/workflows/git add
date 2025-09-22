@@ -1,1 +1,69 @@
-git commit_m first add
+                  WEEK 2
+
+1. What are the softwares that helps to run java programs?
+To run Java programs, you need a combination of development tools (to write and compile code) and a runtime environment (to execute it).
+1. Java Development Kit (JDK)
+2. Java Runtime Environment (JRE)
+3. Integrated Development Environments (IDEs)
+2.What is JDK and JRE?
+(i) Java Development Kit (JDK): 
+Contains the compiler (javac) to translate Java code into bytecode and the Java Runtime Environment (JRE) to run it.
+  Examples:
+Oracle JDK – Official JDK from Oracle.
+OpenJDK – Free, open-source version of the JDK.
+Amazon Corretto – OpenJDK build by Amazon.
+  Without JDK, you cannot compile Java programs.
+(ii)    Java Runtime Environment (JRE):
+Runs  Java programs (already compiled), but cannot compile new code.
+JRE Includes:
+Java Virtual Machine (JVM) – Executes the compiled Java bytecode.
+Core Java Class Libraries – Prebuilt classes (like java.util.*, java.io.*) that your programs use.
+Supporting Files – Configuration files, security files, etc.
+
+
+
+
+3. What is eclipse IDE?
+Eclipse IDE is a free, open-source software application used by developers to write, compile, run, and debug programs, especially in Java (but it also supports many other languages).
+Key Features
+Code Editor – Highlights syntax, suggests code completions, and checks for errors.
+Compiler Integration – Lets you build and run Java programs without opening a separate terminal.
+Debugger – Helps you find and fix errors by running code step-by-step.
+Plugins – Extend functionality for different languages (C, C++, Python, PHP, etc.).
+Project Management – Organizes your files and libraries in one place.
+Cross-platform – Works on Windows, macOS, and Linux.
+In short:
+If the JDK is the “engine” that makes Java run, Eclipse IDE is like the “car dashboard” that makes driving (coding) much easier.
+4. How to run the java program in eclipse/netbeans IDE.
+Step 1 – Install Java & Eclipse
+Install the JDK (Java Development Kit).
+Download Eclipse from https://www.eclipse.org/downloads/ and install it.
+Step 2 – Open Eclipse & Create a Project
+Launch Eclipse.
+Go to File → New → Java Project.
+Enter a Project Name (e.g., MyFirstProject).
+Click Finish.
+Step 3 – Create a Java Class
+Right-click src folder → New → Class.
+Enter a Class Name (e.g., HelloWorld).
+Tick the box public static void main(String[] args) to create the main method automatically.
+Click Finish.
+Step 4 – Write Your Code
+Step 5 – Run the Program
+Click the green Run button  on the toolbar, or press Ctrl + F11.
+Output appears in the Console window.
+NETBEANS
+Step 1 – Install Java & NetBeans
+Install the JDK.
+Download NetBeans from https://netbeans.apache.org/download/ and install it.
+Step 2 – Create a New Project
+Open NetBeans.
+Go to File → New Project.
+Under Java with Ant or Java with Maven, choose Java Application → Next.
+Enter Project Name (e.g., MyFirstNetBeansProject).
+Check Create Main Class and enter name (e.g., helloworld.HelloWorld).
+Click Finish.
+Step 3 – Write Your Code
+Step 4 – Run the Program
+Click the green Run button on the toolbar, or press Shift + F6.
+Output appears in the Output window
